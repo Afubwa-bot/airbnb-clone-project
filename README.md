@@ -57,7 +57,7 @@ A successful project requires collaboration between team members, each bringing 
   - Handle user input and interactivity
   - Ensure cross-browser compatibility and accessibility
 
-### 🗃 Database Administrator (DBA)
+###  Database Administrator (DBA)
 - **Role**: Design, implement, and maintain the database systems.
 - **Responsibilities**:
   - Create data schemas and ER diagrams
@@ -150,7 +150,107 @@ This project leverages a modern full-stack architecture using robust and scalabl
   Platforms for deploying the web app, making it accessible via a public URL with backend and database connectivity.
 
 ---
+##  Database Design
 
-This technology stack ensures the application is fast, secure, and scalable — ideal for replicating core AirBnB features in a production-style environment.
+The AirBnB Clone will use a relational database (e.g., PostgreSQL) to manage structured data across users, listings, bookings, payments, and feedback. Below are the core entities and their relationships.
+
+---
+
+### Users
+Represents individuals using the platform — both hosts and guests.
+
+**Fields:**
+- `id` (Primary Key)
+- `name`
+- `email`
+- `password_hash`
+- `role` (e.g., host, guest)
+- `created_at`
+
+**Relationships:**
+- One user **can own multiple properties**
+- One user **can make multiple bookings**
+- One user **can write multiple reviews**
+
+---
+
+### Properties
+Represents homes/apartments listed on the platform.
+
+**Fields:**
+- `id` (Primary Key)
+- `user_id` (Foreign Key → Users)
+- `title`
+- `description`
+- `location`
+- `price_per_night`
+
+**Relationships:**
+- A property **belongs to one user (host)**
+- A property **can have many bookings**
+- A property **can have many reviews**
+
+---
+
+### Bookings
+Represents reservation details made by guests.
+
+**Fields:**
+- `id` (Primary Key)
+- `user_id` (Foreign Key → Users)
+- `property_id` (Foreign Key → Properties)
+- `check_in_date`
+- `check_out_date`
+- `total_price`
+
+**Relationships:**
+- A booking **belongs to one user (guest)**
+- A booking **belongs to one property**
+- A booking **can have one payment**
+
+---
+
+### Payments
+Handles transaction information for a booking.
+
+**Fields:**
+- `id` (Primary Key)
+- `booking_id` (Foreign Key → Bookings)
+- `amount`
+- `status` (e.g., pending, completed, failed)
+- `payment_method`
+- `timestamp`
+
+**Relationships:**
+- A payment **belongs to one booking**
+
+---
+
+### Reviews
+Feedback submitted by guests after their stay.
+
+**Fields:**
+- `id` (Primary Key)
+- `user_id` (Foreign Key → Users)
+- `property_id` (Foreign Key → Properties)
+- `rating` (e.g., 1–5)
+- `comment`
+- `created_at`
+
+**Relationships:**
+- A review **belongs to one user (guest)**
+- A review **belongs to one property**
+
+---
+
+### Entity Relationships Summary
+- A **User** ⟶ has many **Properties**
+- A **User** ⟶ has many **Bookings**
+- A **User** ⟶ has many **Reviews**
+- A **Property** ⟶ has many **Bookings**
+- A **Property** ⟶ has many **Reviews**
+- A **Booking** ⟶ has one **Payment**
+
+This schema ensures data consistency, supports all key features, and enables easy expansion for future features like favorites, messages, and notifications.
 
 
