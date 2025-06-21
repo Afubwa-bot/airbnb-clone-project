@@ -294,6 +294,69 @@ Hosts can upload multiple images per property, giving guests a visual overview o
 ###  Admin Dashboard (Optional / Advanced)
 An admin or superuser dashboard may be implemented for viewing overall platform data, managing listings and users, and reviewing booking trends. This is ideal for maintenance and scaling of the platform.
 
+##  API Security
+
+Securing the backend API is critical for protecting user data, preventing abuse, and ensuring the integrity of the application. Below are the key security measures implemented in this project:
+
+---
+
+###  Authentication
+**Purpose**: Verify the identity of users before allowing access to protected endpoints.
+
+**Implementation**: The project will use token-based authentication (e.g., JWT or session cookies). Once logged in, users are issued a secure token to authenticate future requests.
+
+**Why It Matters**: Prevents unauthorized users from accessing sensitive endpoints such as profile settings, bookings, and payment data.
+
+---
+
+###  Authorization
+**Purpose**: Control what authenticated users are allowed to do based on their roles (e.g., host vs. guest).
+
+**Implementation**: Role-based access control (RBAC) ensures only the rightful users can create properties, make bookings, or write reviews.
+
+**Why It Matters**: Protects actions like deleting listings, modifying bookings, or accessing admin functions from being misused.
+
+---
+
+###  Rate Limiting & Throttling
+**Purpose**: Prevent abuse of the API through excessive requests or brute-force attacks.
+
+**Implementation**: Middleware will be added to limit the number of requests per IP/user per minute using tools like Django Ratelimit or Flask-Limiter.
+
+**Why It Matters**: Protects against DDoS attacks, password brute-forcing, and keeps the server stable under high traffic.
+
+---
+
+###  Data Encryption (HTTPS)
+**Purpose**: Protect data in transit between the client and server.
+
+**Implementation**: HTTPS will be enforced using SSL/TLS certificates in production environments.
+
+**Why It Matters**: Prevents attackers from intercepting login credentials, payment details, and personal data.
+
+---
+
+###  Input Validation & Sanitization
+**Purpose**: Prevent injection attacks (e.g., SQL injection, XSS).
+
+**Implementation**: All inputs will be validated both client-side and server-side using schema validators and ORM protections.
+
+**Why It Matters**: Shields the system from malicious input that could compromise the database or user sessions.
+
+---
+
+###  Secure Error Handling
+**Purpose**: Avoid exposing sensitive application details in error messages.
+
+**Implementation**: Custom error messages will be user-friendly and generic in production, while detailed logs are stored securely for devs.
+
+**Why It Matters**: Prevents attackers from learning about the internal structure of the backend through stack traces or DB errors.
+
+---
+
+API security is vital to the trustworthiness and stability of the AirBnB Clone platform. From login to payments, each interaction must be protected to ensure a secure and seamless experience for users.
+
+
 
 
 
