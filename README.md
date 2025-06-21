@@ -33,8 +33,6 @@ This is a full-stack Airbnb clone web application that allows users to list prop
 - Docker 
 - Postman(API Testing)
 
----
-
 ##  Folder Structure
 
 ##  Team Roles
@@ -96,7 +94,7 @@ A successful project requires collaboration between team members, each bringing 
   - Configure cloud services (AWS, Heroku, etc.)
   - Monitor performance and uptime
   - Secure the infrastructure
----
+    
 ##  Technology Stack
 
 This project leverages a modern full-stack architecture using robust and scalable technologies. Each component plays a specific role in delivering functionality, performance, and maintainability.
@@ -149,7 +147,6 @@ This project leverages a modern full-stack architecture using robust and scalabl
 - **Heroku / AWS**  
   Platforms for deploying the web app, making it accessible via a public URL with backend and database connectivity.
 
----
 ##  Database Design
 
 The AirBnB Clone will use a relational database (e.g., PostgreSQL) to manage structured data across users, listings, bookings, payments, and feedback. Below are the core entities and their relationships.
@@ -252,5 +249,53 @@ Feedback submitted by guests after their stay.
 - A **Booking** ⟶ has one **Payment**
 
 This schema ensures data consistency, supports all key features, and enables easy expansion for future features like favorites, messages, and notifications.
+
+##  Feature Breakdown
+
+Below is a breakdown of the core features implemented in the AirBnB Clone project. Each feature represents a key module designed to replicate the real-world functionality of the original AirBnB platform.
+
+---
+
+###  User Management
+This module allows users to register, log in, update their profile, and manage their session. Users can take on the role of either **guests** (who book properties) or **hosts** (who list properties). Authentication is securely handled using hashed passwords and session-based or token-based authentication.
+
+---
+
+###  Property Management
+Hosts can list their properties by providing key details such as title, location, description, images, price per night, and availability. This feature enables the CRUD (Create, Read, Update, Delete) operations on property listings and is essential for populating the platform's marketplace.
+
+---
+
+###  Booking System
+Guests can book available properties by selecting check-in and check-out dates. The system automatically calculates the total cost, checks for availability, and prevents date conflicts. This feature handles both the **logic and user interaction** involved in making and managing reservations.
+
+---
+
+### Payment Integration
+Once a booking is confirmed, the system processes the associated payment securely using simulated or third-party payment services. Each payment is linked to a booking and logs transaction details like amount, payment method, and status. This ensures traceability and a secure financial flow.
+
+---
+
+###  Review & Rating System
+Guests can leave reviews and ratings after a completed stay, helping other users evaluate the quality of properties and hosts. Reviews are publicly visible and tied to both the **user** and the **property**, supporting transparency and credibility on the platform.
+
+---
+
+###  Search and Filtering
+Users can search for properties based on location, price range, date availability, and other filters. This feature improves usability by enabling quick discovery of relevant listings that match user preferences.
+
+---
+
+###  Image Uploads
+Hosts can upload multiple images per property, giving guests a visual overview of the space. Images are stored and displayed securely, enhancing the attractiveness and trustworthiness of property listings.
+
+---
+
+###  Admin Dashboard (Optional / Advanced)
+An admin or superuser dashboard may be implemented for viewing overall platform data, managing listings and users, and reviewing booking trends. This is ideal for maintenance and scaling of the platform.
+
+
+
+
 
 
