@@ -356,6 +356,46 @@ Securing the backend API is critical for protecting user data, preventing abuse,
 
 API security is vital to the trustworthiness and stability of the AirBnB Clone platform. From login to payments, each interaction must be protected to ensure a secure and seamless experience for users.
 
+## CI/CD Pipeline
+
+###  What is CI/CD?
+
+**CI/CD** stands for **Continuous Integration** and **Continuous Deployment/Delivery** — a set of development practices that automatically test, build, and deploy code changes. It ensures that updates to the codebase are integrated, validated, and delivered smoothly and reliably.
+
+---
+
+###  Why CI/CD is Important
+
+- **Consistency**: Automates testing and deployment to ensure every environment (dev, staging, production) works the same.
+- **Speed**: Reduces manual work by running builds, tests, and deployments automatically after every push.
+- **Reliability**: Catches bugs early through automated tests, reducing the chance of breaking production.
+- **Collaboration**: Encourages smaller, frequent commits and merges — reducing merge conflicts and integration bugs.
+
+---
+
+###  Tools We Can Use
+
+| Tool             | Purpose                                      |
+|------------------|----------------------------------------------|
+| **GitHub Actions**  | Automate workflows: test, lint, deploy on push |
+| **Docker**          | Containerize the application for consistency   |
+| **Heroku / AWS / Vercel** | Cloud platforms for auto-deployment       |
+| **PyTest / Jest**   | Test automation for backend/frontend          |
+| **CodeCov / SonarQube** | Test coverage and code quality metrics    |
+
+---
+
+###  Sample Workflow (GitHub Actions)
+1. On every `push` or `pull request` to `main`:
+   - Run backend and frontend tests
+   - Build Docker containers
+   - Deploy to Heroku or AWS (optional)
+
+---
+By implementing CI/CD, this project ensures faster iterations, higher quality code, and smooth delivery from development to production.
+
+
+
 
 
 
